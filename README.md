@@ -1,5 +1,5 @@
 # NVIDIA-Isaac-Sim-SDK-Cookbook
-NVIDIA Isaac Sim+SDK Cookbook: Recipes for NVIDIA ISAAC from the 'ingredients' to the arranged 'dish'. The original instructions and tutorials are convoluted but hopefully this guide helps you. Note, this guide was designed for Ubuntu 18, ISAAC 2021-1. 
+NVIDIA Isaac Sim+SDK Cookbook: Recipes for NVIDIA ISAAC from the 'ingredients' to the arranged 'dish'. The original instructions and tutorials are convoluted but hopefully this guide helps you. Note, this guide was designed for Ubuntu 18, ISAAC 2021-1. The order of the sections in this guide are purposefully made to navigate your experience toward understanding the software suite. 
 
 What this repo contains:
 - [Installation](#Installation)
@@ -44,6 +44,10 @@ With these, you can call `isaac_python` on any python file to run it with all th
 - NVIDIA Sight [localhost:3000](localhost:3000)
 - Upload files to Omniverse [localhost:8080](localhost:8080)
 - Running apps and services [localhost:3080](localhost:3080)
+
+## Playing wit Scripting
+
+In Isaac Sim, add a Franka robot from `Create > Isaac > Robots >From Library > Franka`. Then click `Window > Script Editor` and dock it somewhere. Try the premade snippets or your own code in the scripting editor. Finally, click on Run. No building or reloading needed! 
 
 # Making new Isaac SDK apps and nodelets
 
