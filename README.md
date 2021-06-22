@@ -15,12 +15,29 @@ What this repo doesn't contain yet:
 3) From the Omniverse Launcher, search for ISAAC Sim and download it.
 4) Launch. 
 5) From the same website, search for ISAAC Sim and download the latest version of Assets. These will be useful for the tutorials.
+4) `cd <SIM> && ./python.sh python_samples/syntheticdata/basic/visualize_groundtruth.py`. This will create a synthetic data image in `<sdk>` that validates that cameras are correctly operating.
 
 ## SDK
 1) Similarly, download the [SDK](https://developer.nvidia.com/isaac-sdk)
 2) `cd <sdk>/engine && install_dependencies.sh` 
 3) `cd <sdk>` and try `bazel build \\apps\samples\stereo_dummy`. If this runs okay you've got everything working correctly! You can check at localhost:3000 for the output Sight.
-4) [Optional] `cd <sdk> && ./python.sh python_samples/syntheticdata/basic/visualize_groundtruth.py`. This will create a synthetic data image in `<sdk>` that validates that cameras are correctly operating.
+
+# Startup Tips 
+
+## Useful aliases
+
+Useful aliases to add to your `.bash_aliases`:
+
+```
+ISAAC_SOURCE_LOC='PATH TO YOUR ISAAC SIM'
+alias isaac_start='cd $ISAAC_SOURCE_LOC && ./isaac-sim.sh --/renderer/activeGpu=1'
+
+alias isaac_python='export EXP_PATH=$ISAAC_SOURCE_LOC/apps &&
+					source $ISAAC_SOURCE_LOC/setup_python_env.sh && 
+					$ISAAC_SOURCE_LOC/kit/python/bin/python3'
+```
+
+With these, you can call `isaac_python` on any python file to run it with all the needed libraries.
 
 # Making new Isaac SDK apps and nodelets
 
