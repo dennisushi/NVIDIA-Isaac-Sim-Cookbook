@@ -20,6 +20,7 @@ What this repo doesn't contain yet:
 1) Similarly, download the [SDK](https://developer.nvidia.com/isaac-sdk)
 2) `cd <sdk>/engine && install_dependencies.sh` 
 3) `cd <sdk>` and try `bazel build \\apps\samples\stereo_dummy`. If this runs okay you've got everything working correctly! You can check at localhost:3000 for the output Sight.
+4) [Optional] `cd <sdk> && ./python.sh python_samples/syntheticdata/basic/visualize_groundtruth.py`. This will create a synthetic data image in `<sdk>` that validates that cameras are correctly operating.
 
 # Making new Isaac SDK apps and nodelets
 
