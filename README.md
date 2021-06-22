@@ -45,7 +45,7 @@ With these, you can call `isaac_python` on any python file to run it with all th
 - Upload files to Omniverse [localhost:8080](localhost:8080)
 - Running apps and services [localhost:3080](localhost:3080)
 
-## Playing wit Scripting
+## Playing with Scripting
 
 In Isaac Sim, add a Franka robot from `Create > Isaac > Robots >From Library > Franka`. Then click `Window > Script Editor` and dock it somewhere. Try the premade snippets or your own code in the scripting editor. Finally, click on Run. No building or reloading needed! 
 
