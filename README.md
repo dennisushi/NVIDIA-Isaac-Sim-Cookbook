@@ -39,6 +39,12 @@ alias isaac_python='export EXP_PATH=$ISAAC_SOURCE_LOC/apps &&
 
 With these, you can call `isaac_python` on any python file to run it with all the needed libraries.
 
+## Useful localhosts
+
+- NVIDIA Sight [localhost:3000](localhost:3000)
+- Upload files to Omniverse [localhost:8080](localhost:8080)
+- Running apps and services [localhost:3080](localhost:3080)
+
 # Making new Isaac SDK apps and nodelets
 
 Full guide [here](https://docs.nvidia.com/isaac/archive/2019.1/apps/tutorials/doc/ping.html#cplusplus-ping)
