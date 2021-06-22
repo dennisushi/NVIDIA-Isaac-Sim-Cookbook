@@ -3,6 +3,7 @@ NVIDIA Isaac Sim+SDK Cookbook: Recipes for NVIDIA ISAAC from the 'ingredients' t
 
 What this repo contains:
 - [Installation](#Installation)
+- [Making new Isaac SDK apps and nodelets](#Making-new-Isaac-SDK-apps-and-nodelets)
 
 What this repo doesn't contain yet:
 - Everything else.
