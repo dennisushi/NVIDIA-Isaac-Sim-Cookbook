@@ -175,6 +175,8 @@ You need to launch Sim, add the required asset (ur10_basic.usd), add `Isaac Util
 ## REB Objects
 If you want to create a scene whose camera you can use in your apps, you need to add an REB and set its cameraPrim target to the camera object. Then select the options for depth/rgb/etc with output component "output" and channel by your choice.
 
+Hereon, [this](https://docs.nvidia.com/isaac/isaac/doc/doc/component_api.html) documentation will be your best friend. Check it for references to what the input and output messages are.
+
 [TODO] Add simple script
 
 [TODO] Try isaac sim with -vulkan -isaac_sim_config_json="/PATH/TO/paths.json"
