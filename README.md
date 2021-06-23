@@ -163,6 +163,26 @@ Finally,
 }
 ```
 
+# Connecting SDK apps to Sim
+
+The most useful tutorial for this if found [here](https://docs.nvidia.com/isaac/isaac/doc/manipulation/samples.html#manipulation-sample-applications).
+
+You need to launch Sim, add the required asset (ur10_basic.usd), add `Isaac Utils > Robot Engine Bridge > Create Application`, press Play. Then run the tutorial as instructed. Useful takeaways from the code: 
+
+- Manipulation components use CompositeProto messages to communicate
+- The stage.usd controls are enabled by Robot Engine Bridge (REB) objects.
+
+## REB Objects
+If you want to create a scene whose camera you can use in your apps, you need to add an REB and set its cameraPrim target to the camera object. Then select the options for depth/rgb/etc with output component "output" and channel by your choice.
+
+[TODO] Add simple script
+
+[TODO] Try isaac sim with -vulkan -isaac_sim_config_json="/PATH/TO/paths.json"
+
+## Using ROS Bridge
+
+In Isaac SIM, add a Ros Bridge object from `Create > Isaac > ROS >`, specify desired configuration and press play. If, for example, you added a camera and enabled the depth and color information, and connected it to a camera object, you should be able to view the images from `rosrun image_view image_view image:=TOPIC NAME`.
+
 # Interact with ML Models
 [TODO]
 
