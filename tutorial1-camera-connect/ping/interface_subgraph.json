@@ -1,0 +1,100 @@
+{
+  "name": "interface_subgraph",
+  "modules": [
+    "engine_tcp_udp",
+    "navsim",
+    "sight",
+    "viewers"
+  ],
+  "graph": {
+    "nodes": [
+
+      {
+        "name": "interface",
+        "components": [
+          {
+            "name": "ledger",
+            "type": "isaac::alice::MessageLedger"
+          },
+          {
+            "name": "subgraph",
+            "type": "isaac::alice::Subgraph"
+          },
+          {
+            "name": "sight",
+            "type": "isaac::alice::Subgraph"
+          },
+          {
+            "name": "input",
+            "type": "isaac::alice::TcpPublisher"
+          },
+          {
+            "name": "output",
+            "type": "isaac::alice::TcpSubscriber"
+          },
+          {
+            "name": "time_sync",
+            "type": "isaac::alice::TimeSynchronizer"
+          }
+        ]
+      },
+
+
+
+      {
+        "name": "scenario_manager",
+        "components": [
+          {
+            "name": "ledger",
+            "type": "isaac::alice::MessageLedger"
+          },
+          {
+            "name": "scenario_manager",
+            "type": "isaac::navsim::ScenarioManager"
+          }
+        ]
+      }
+
+
+    ],
+
+    "edges": [
+
+      {
+        "source": "scenario_manager/scenario_manager/scenario_control",
+        "target": "interface/input/scenario_control"
+      },
+      {
+        "source": "interface/output/scenario_reply",
+        "target": "scenario_manager/scenario_manager/scenario_reply"
+      }
+    ]
+  },
+
+
+
+
+  "config": {
+    "interface": {
+      "input": {
+        "port": 55001
+      },
+      "output": {
+        "port": 55000,
+        "host": "localhost"
+      }
+    },
+
+
+    "websight": {
+      "WebsightServer": {
+        "port": 3000,
+        "ui_config": {
+          "windows": {}
+        }
+      }
+    }
+
+
+  }
+}
