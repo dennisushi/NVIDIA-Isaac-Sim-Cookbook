@@ -4,6 +4,7 @@ NVIDIA Isaac Sim+SDK Cookbook: Recipes for NVIDIA ISAAC from the 'ingredients' t
 What this repo contains:
 - [Installation](#Installation)
 - [Making new Isaac SDK apps and nodelets](#Making-new-Isaac-SDK-apps-and-nodelets)
+- [Connecting SDK apps to Sim](#Connecting-SDK-apps-to-Sim)
 
 What this repo doesn't contain yet:
 - Everything else.
@@ -173,11 +174,7 @@ You need to launch Sim, add the required asset (ur10_basic.usd), add `Isaac Util
 - The stage.usd controls are enabled by Robot Engine Bridge (REB) objects.
 
 ## REB Objects
-If you want to create a scene whose camera you can use in your apps, you need to add an REB and set its cameraPrim target to the camera object. Then select the options for depth/rgb/etc with output component "output" and channel by your choice.
-
-Hereon, [this](https://docs.nvidia.com/isaac/isaac/doc/doc/component_api.html) documentation will be your best friend. Check it for references to what the input and output messages are.
-
-[TODO] Add simple script
+If you want to create a scene whose camera you can use in your apps, you need to add an REB and set its cameraPrim target to the camera object. Then select the options for depth/rgb/etc with output component "output" and channel by your choice. A simple script showing these connections is shown in this repository, dubbed `tutorial1`. Hereon, [this](https://docs.nvidia.com/isaac/isaac/doc/doc/component_api.html) documentation will be your best friend. Check it for references to what the input and output messages are.
 
 [TODO] Try isaac sim with -vulkan -isaac_sim_config_json="/PATH/TO/paths.json"
 
