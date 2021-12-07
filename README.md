@@ -5,6 +5,7 @@ What this repo contains:
 - [Installation](#Installation)
 - [Making new Isaac SDK apps and nodelets](#Making-new-Isaac-SDK-apps-and-nodelets)
 - [Connecting SDK apps to Sim](#Connecting-SDK-apps-to-Sim)
+- [Making new Isaac Extensions](#Making-new-Isaac-Extensions)
 
 What this repo doesn't contain yet:
 - Everything else.
@@ -181,6 +182,30 @@ If you want to create a scene whose camera you can use in your apps, you need to
 ## Using ROS Bridge
 
 In Isaac SIM, add a Ros Bridge object from `Create > Isaac > ROS >`, specify desired configuration and press play. If, for example, you added a camera and enabled the depth and color information, and connected it to a camera object, you should be able to view the images from `rosrun image_view image_view image:=TOPIC NAME`.
+
+# Making new Isaac Extensions
+
+- 1) Navigate to `<path>\Kit\apps\Isaac-Sim\exts`. For me, the path is located in Documents.
+- 2) Add a symbolic link shortcut pointing to your custom extension folder.
+- 3) In the extension folder, you should add a folder `config` containing `extension.toml`. This file should list your dependencies and custom scripts:
+	```bash
+	display_name = "Custom Extension Name"
+
+	[dependencies]
+	"omni.isaac.dynamic_control" = {}
+	"omni.isaac.range_sensor" = {}
+	"omni.syntheticdata" = {}
+
+	[[python.module]]
+	name = "DIR1.DIR2.DIR3" # Where DIR names correspond to folder structure in the extension folder
+				# with extension.py found in the last folder, or the last DIR corresponding 
+				# to a DIR3.py which holds the extension
+
+	[[native.plugin]]
+	#path = "/home/dennisushi/.local/share/ov/pkg/isaac_sim-2021.1.0/kit/plugins/*.plugin"
+	recursive = false
+	```
+- 4) The extension file should declare a class ```python class Extension(omni.ext.IExt)```
 
 # Interact with ML Models
 [TODO]
