@@ -1,4 +1,4 @@
-# NVIDIA-Isaac-Sim-SDK-Cookbook
+# NVIDIA IsaacSim Cookbook
 NVIDIA Isaac Sim+SDK Cookbook: Recipes for NVIDIA ISAAC from the 'ingredients' to the arranged 'dish'. The original instructions and tutorials are convoluted but hopefully this guide helps you. Note, this guide was designed for Ubuntu 18, ISAAC 2021-1. The order of the sections in this guide are purposefully made to navigate your experience toward understanding the software suite. 
 
 What this repo contains:
