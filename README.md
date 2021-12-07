@@ -202,7 +202,6 @@ In Isaac SIM, add a Ros Bridge object from `Create > Isaac > ROS >`, specify des
 				# to a DIR3.py which holds the extension
 
 	[[native.plugin]]
-	#path = "/home/dennisushi/.local/share/ov/pkg/isaac_sim-2021.1.0/kit/plugins/*.plugin"
 	recursive = false
 	```
 - 4) The extension file should declare a class ```python class Extension(omni.ext.IExt)```
