@@ -12,12 +12,12 @@ What this repo doesn't contain yet:
 
 # Installation
 ## Sim
-1) Get the Omniverse Launcher from [here](NVIDIA Isaac Sim+SDK Cookbook). You should get the Linux AppImage file.
+1) Get the Omniverse Launcher from [here](NVIDIA Isaac Sim). You should get the Linux AppImage file.
 2) Make the file executable and run it.
 3) From the Omniverse Launcher, search for ISAAC Sim and download it.
 4) Launch. 
-5) From the same website, search for ISAAC Sim and download the latest version of Assets. These will be useful for the tutorials.
-4) `cd <SIM> && ./python.sh python_samples/syntheticdata/basic/visualize_groundtruth.py`. This will create a synthetic data image in `<sdk>` that validates that cameras are correctly operating.
+5) From the same website, search for ISAAC Sim and download the latest version of Assets. These will be useful for the tutorials. Alternatively, mount them into the Nucleus Server.
+4) `cd <SIM> && ./python.sh python_samples/syntheticdata/basic/visualize_groundtruth.py`. This will create a synthetic data image in `<sdk>` that validates that the examples are correctly operating.
 
 ## SDK
 1) Similarly, download the [SDK](https://developer.nvidia.com/isaac-sdk)
@@ -43,13 +43,48 @@ With these, you can call `isaac_python` on any python file to run it with all th
 
 ## Useful localhosts
 
-- NVIDIA Sight [localhost:3000](localhost:3000)
-- Upload files to Omniverse [localhost:8080](localhost:8080)
-- Running apps and services [localhost:3080](localhost:3080)
+- NVIDIA Sight [localhost:3000](https://localhost:3000)
+- Upload files to Omniverse [localhost:8080](https://localhost:8080)
+- Running apps and services [localhost:3080](https://localhost:3080)
 
 ## Playing with Scripting
 
 In Isaac Sim, add a Franka robot from `Create > Isaac > Robots >From Library > Franka`. Then click `Window > Script Editor` and dock it somewhere. Try the premade snippets or your own code in the scripting editor. Finally, click on Run. No building or reloading needed! 
+
+# Making new Isaac Extensions
+
+- 1) Navigate to `<path>\Kit\apps\Isaac-Sim\exts`. For me, the path is located in Documents.
+- 2) Add a symbolic link shortcut pointing to your custom extension folder.
+- 3) In the extension folder, you should add a folder `config` containing `extension.toml`. This file should list your dependencies and custom scripts:
+	```
+	bash[core]
+	reloadable = true
+
+	display_name = "Custom Extension Name"
+
+	[dependencies]
+	"omni.isaac.dynamic_control" = {}
+	"omni.isaac.range_sensor" = {}
+	"omni.syntheticdata" = {}
+
+	[[python.module]]
+	name = "DIR1.DIR2.DIR3" # Where DIR names correspond to folder structure in the extension folder
+				# with extension.py found in the last folder, or the last DIR corresponding 
+				# to a DIR3.py which holds the extension
+
+	[[native.plugin]]
+	recursive = false
+	```
+- 4) The extension file should declare a class ```python class Extension(omni.ext.IExt)```
+
+# Working with Jupyter
+
+Best example:
+
+```
+cd ~/.local/share/ov/pkg/isaac_sim-VERSION
+./jupyter_notebook.sh standalone_examples/notebooks/hello_world.ipynb
+```
 
 # Making new Isaac SDK apps and nodelets
 
@@ -182,29 +217,6 @@ If you want to create a scene whose camera you can use in your apps, you need to
 ## Using ROS Bridge
 
 In Isaac SIM, add a Ros Bridge object from `Create > Isaac > ROS >`, specify desired configuration and press play. If, for example, you added a camera and enabled the depth and color information, and connected it to a camera object, you should be able to view the images from `rosrun image_view image_view image:=TOPIC NAME`.
-
-# Making new Isaac Extensions
-
-- 1) Navigate to `<path>\Kit\apps\Isaac-Sim\exts`. For me, the path is located in Documents.
-- 2) Add a symbolic link shortcut pointing to your custom extension folder.
-- 3) In the extension folder, you should add a folder `config` containing `extension.toml`. This file should list your dependencies and custom scripts:
-	```bash
-	display_name = "Custom Extension Name"
-
-	[dependencies]
-	"omni.isaac.dynamic_control" = {}
-	"omni.isaac.range_sensor" = {}
-	"omni.syntheticdata" = {}
-
-	[[python.module]]
-	name = "DIR1.DIR2.DIR3" # Where DIR names correspond to folder structure in the extension folder
-				# with extension.py found in the last folder, or the last DIR corresponding 
-				# to a DIR3.py which holds the extension
-
-	[[native.plugin]]
-	recursive = false
-	```
-- 4) The extension file should declare a class ```python class Extension(omni.ext.IExt)```
 
 # Interact with ML Models
 [TODO]
