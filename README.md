@@ -42,9 +42,9 @@ With these, you can call `isaac_python` on any python file to run it with all th
 
 ## Useful localhosts
 
-- NVIDIA Sight [localhost:3000](https://localhost:3000)
-- Upload files to Omniverse [localhost:8080](https://localhost:8080)
-- Running apps and services [localhost:3080](https://localhost:3080)
+- NVIDIA Sight [localhost:3000](localhost:3000)
+- Upload files to Omniverse [localhost:8080](localhost:8080)
+- Running apps and services [localhost:3080](localhost:3080)
 
 ## Playing with Scripting
 
