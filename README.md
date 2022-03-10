@@ -12,12 +12,11 @@ What this repo doesn't contain yet:
 
 # Installation
 ## Sim
-1) Get the Omniverse Launcher from [here](NVIDIA Isaac Sim). You should get the Linux AppImage file.
+1) Get the Omniverse Launcher from [here](https://www.nvidia.com/en-gb/omniverse/). You should get the Linux AppImage file.
 2) Make the file executable and run it.
 3) From the Omniverse Launcher, search for ISAAC Sim and download it.
 4) Launch. 
-5) From the same website, search for ISAAC Sim and download the latest version of Assets. These will be useful for the tutorials. Alternatively, mount them into the Nucleus Server.
-4) `cd <SIM> && ./python.sh python_samples/syntheticdata/basic/visualize_groundtruth.py`. This will create a synthetic data image in `<sdk>` that validates that the examples are correctly operating.
+5) `cd <SIM> && ./python.sh python_samples/syntheticdata/basic/visualize_groundtruth.py`. This will create a synthetic data image in `<sdk>` that validates that the examples are correctly operating.
 
 ## SDK
 1) Similarly, download the [SDK](https://developer.nvidia.com/isaac-sdk)
