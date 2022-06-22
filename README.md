@@ -3,9 +3,7 @@ NVIDIA Isaac Sim+SDK Cookbook: Recipes for NVIDIA ISAAC from the 'ingredients' t
 
 What this repo contains:
 - [Installation](#Installation)
-- [Making new Isaac SDK apps and nodelets](#Making-new-Isaac-SDK-apps-and-nodelets)
-- [Connecting SDK apps to Sim](#Connecting-SDK-apps-to-Sim)
-- [Making new Isaac Extensions](#Making-new-Isaac-Extensions)
+- [Getting Started](#Getting-Started)
 
 What this repo doesn't contain yet:
 - Everything else.
@@ -17,6 +15,51 @@ What this repo doesn't contain yet:
 3) From the Omniverse Launcher, search for ISAAC Sim and download it.
 4) Launch. 
 5) `cd <SIM> && ./python.sh python_samples/syntheticdata/basic/visualize_groundtruth.py`. This will create a synthetic data image in `<sdk>` that validates that the examples are correctly operating.
+
+# Getting Started
+
+## Playing with Scripting
+
+In Isaac Sim, add a Franka robot from `Create > Isaac > Robots >From Library > Franka`. Then click `Window > Script Editor` and dock it somewhere. Try the premade snippets or your own code in the scripting editor. Finally, click on Run. No building or reloading needed! 
+
+## Making new Isaac Extensions
+
+- 1) Navigate to `<path>\Kit\apps\Isaac-Sim\exts`. For me, the path is located in Documents.
+- 2) Add a symbolic link shortcut pointing to your custom extension folder. `ln -s <path to custom extension>`
+- 3) In the extension folder, you should add a folder `config` containing `extension.toml`. This file should list your dependencies and custom scripts:
+	```bash
+	[core]
+	reloadable = true
+
+	display_name = "Custom Extension Name"
+
+	[dependencies]
+	"omni.isaac.dynamic_control" = {}
+	"omni.isaac.range_sensor" = {}
+	"omni.syntheticdata" = {}
+
+	[[python.module]]
+	name = "DIR1.DIR2.DIR3" # Where DIR names correspond to folder structure in the extension folder
+				# with extension.py found in the last folder, or the last DIR corresponding 
+				# to a DIR3.py which holds the extension
+
+	[[native.plugin]]
+	recursive = false
+	```
+- 4) The extension file should declare a class ```python class Extension(omni.ext.IExt)```
+
+## Working with Jupyter
+
+Best example:
+
+```
+cd ~/.local/share/ov/pkg/isaac_sim-VERSION
+./jupyter_notebook.sh standalone_examples/notebooks/hello_world.ipynb
+```
+
+
+
+# NOTE: the following sections are now likely outdated and only relevant for Isaac Sim 2020
 
 ## SDK
 1) Similarly, download the [SDK](https://developer.nvidia.com/isaac-sdk)
@@ -45,45 +88,6 @@ With these, you can call `isaac_python` on any python file to run it with all th
 - NVIDIA Sight [localhost:3000](localhost:3000)
 - Upload files to Omniverse [localhost:8080](localhost:8080)
 - Running apps and services [localhost:3080](localhost:3080)
-
-## Playing with Scripting
-
-In Isaac Sim, add a Franka robot from `Create > Isaac > Robots >From Library > Franka`. Then click `Window > Script Editor` and dock it somewhere. Try the premade snippets or your own code in the scripting editor. Finally, click on Run. No building or reloading needed! 
-
-# Making new Isaac Extensions
-
-- 1) Navigate to `<path>\Kit\apps\Isaac-Sim\exts`. For me, the path is located in Documents.
-- 2) Add a symbolic link shortcut pointing to your custom extension folder.
-- 3) In the extension folder, you should add a folder `config` containing `extension.toml`. This file should list your dependencies and custom scripts:
-	```
-	bash[core]
-	reloadable = true
-
-	display_name = "Custom Extension Name"
-
-	[dependencies]
-	"omni.isaac.dynamic_control" = {}
-	"omni.isaac.range_sensor" = {}
-	"omni.syntheticdata" = {}
-
-	[[python.module]]
-	name = "DIR1.DIR2.DIR3" # Where DIR names correspond to folder structure in the extension folder
-				# with extension.py found in the last folder, or the last DIR corresponding 
-				# to a DIR3.py which holds the extension
-
-	[[native.plugin]]
-	recursive = false
-	```
-- 4) The extension file should declare a class ```python class Extension(omni.ext.IExt)```
-
-# Working with Jupyter
-
-Best example:
-
-```
-cd ~/.local/share/ov/pkg/isaac_sim-VERSION
-./jupyter_notebook.sh standalone_examples/notebooks/hello_world.ipynb
-```
 
 # Making new Isaac SDK apps and nodelets
 
